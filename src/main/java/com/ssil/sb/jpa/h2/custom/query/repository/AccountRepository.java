@@ -11,6 +11,8 @@ import java.util.List;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
+
+    // filter accounts by Active status
     List<Account> findAllByActive(boolean active);
 
     @Query("UPDATE Account a SET a.balance = a.balance + ?1 WHERE a.id = ?2")

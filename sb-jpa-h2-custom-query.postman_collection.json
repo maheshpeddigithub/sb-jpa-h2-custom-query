@@ -98,7 +98,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/account/2",
+					"raw": "localhost:8080/api/account/1",
 					"host": [
 						"localhost"
 					],
@@ -106,7 +106,7 @@
 					"path": [
 						"api",
 						"account",
-						"2"
+						"1"
 					]
 				}
 			},
