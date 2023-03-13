@@ -4,6 +4,7 @@ import com.ssil.sb.jpa.h2.custom.query.model.Account;
 import com.ssil.sb.jpa.h2.custom.query.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,11 @@ public class AccountService {
     }
 
     public List<Account> getActiveAccounts() {
-        return repository.findAllByActive(true);
+        return repository.findAllActive();
+    }
+
+    public List<Account> getCreatedBetween(Date startDate, Date endDate) {
+        return repository.findAllCreatedBetween(startDate, endDate);
     }
 
     public Account saveAccount(Account account) {
@@ -42,6 +47,10 @@ public class AccountService {
 
     public void deleteAccount(long id) {
         repository.deleteById(id);
+    }
+
+    public void deleteAll() {
+        repository.deleteAll();
     }
 
 }

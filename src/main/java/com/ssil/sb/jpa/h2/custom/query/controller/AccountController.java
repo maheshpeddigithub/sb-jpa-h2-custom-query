@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +39,11 @@ public class AccountController {
     public ResponseEntity<Account> getAccount(@PathVariable long id) {
         Optional<Account> account = service.getAccount(id);
         return account.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
+    }
+
+    @GetMapping("/created")
+    public ResponseEntity<List<Account>> getAccountsCreatedBetween(@RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate) throws ParseException {
+        return new ResponseEntity<>(service.getCreatedBetween(new SimpleDateFormat("yyyy-MM-dd").parse(startDate), new SimpleDateFormat("yyyy-MM-dd").parse(endDate)), HttpStatus.OK);
     }
 
     @GetMapping("/active")
@@ -63,6 +71,12 @@ public class AccountController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteAccount(@PathVariable long id) {
         service.deleteAccount(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @DeleteMapping()
+    public ResponseEntity<?> deleteAllAccounts() {
+        service.deleteAll();
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

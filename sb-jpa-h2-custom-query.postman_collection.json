@@ -45,13 +45,43 @@
 			"response": []
 		},
 		{
+			"name": "GetAccountsCreatedBetween",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/account/created?startDate=2021-10-11&endDate=2021-10-14",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"account",
+						"created"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2021-10-11"
+						},
+						{
+							"key": "endDate",
+							"value": "2021-10-14"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "CreateAccount",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"number\": 12347,\n    \"balance\": 12,\n    \"active\": true\n}",
+					"raw": "{\n    \"number\": 14,\n    \"balance\": 14,\n    \"active\": true,\n    \"created\": \"2021-10-14\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

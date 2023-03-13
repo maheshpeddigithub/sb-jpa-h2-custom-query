@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Table
 @AllArgsConstructor
@@ -29,5 +31,8 @@ public class Account {
 
     @Column
     private boolean active;
+
+    @Column
+    private Date created;
 
 }
