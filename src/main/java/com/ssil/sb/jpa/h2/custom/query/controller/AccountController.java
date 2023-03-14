@@ -3,6 +3,7 @@ package com.ssil.sb.jpa.h2.custom.query.controller;
 import com.ssil.sb.jpa.h2.custom.query.model.Account;
 import com.ssil.sb.jpa.h2.custom.query.model.Amount;
 import com.ssil.sb.jpa.h2.custom.query.service.AccountService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -52,7 +53,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public ResponseEntity<Account> saveAccount(@RequestBody Account account) {
+    public ResponseEntity<Account> saveAccount(@RequestBody @Valid Account account) {
         return new ResponseEntity<>(service.saveAccount(account), HttpStatus.CREATED);
     }
 

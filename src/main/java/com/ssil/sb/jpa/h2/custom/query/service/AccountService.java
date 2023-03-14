@@ -2,6 +2,7 @@ package com.ssil.sb.jpa.h2.custom.query.service;
 
 import com.ssil.sb.jpa.h2.custom.query.model.Account;
 import com.ssil.sb.jpa.h2.custom.query.repository.AccountRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class AccountService {
 
     private AccountRepository repository;
